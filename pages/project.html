@@ -13,9 +13,15 @@
             font-family: 'Arial', sans-serif;
         }
         
+        html, body {
+            height: 100%;
+        }
+        
         body {
             background-color: #FEFFEB;
             color: #333;
+            display: flex;
+            flex-direction: column;
         }
         
         /* Хедер */
@@ -26,6 +32,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
         
         .logo img {
@@ -94,6 +101,11 @@
         }
         
         /* Основное содержимое */
+        .main-content {
+            flex: 1 0 auto;
+            width: 100%;
+        }
+        
         .container {
             display: flex;
             max-width: 1200px;
@@ -159,6 +171,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 20px;
+            min-height: 500px;
         }
         
         .products-grid {
@@ -269,11 +282,11 @@
         footer {
             background-color: #7B5E4B;
             padding: 30px 20px;
-            margin-top: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #ffffff;
+            flex-shrink: 0;
         }
         
         .footer-contact {
@@ -346,73 +359,75 @@
         </div>
     </header>
     
-    <div class="container">
-        <aside class="sidebar">
-            <h2>Категории товаров</h2>
+    <div class="main-content">
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Категории товаров</h2>
+                
+                <div class="all-categories" onclick="showAllProducts()">Все товары</div>
+                
+                <div class="category">
+                    <div class="category-title" onclick="toggleSubcategories(this)">
+                        Скобяные изделия
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory" onclick="filterProducts('Крепеж')">Крепеж</div>
+                        <div class="subcategory" onclick="filterProducts('Перфорированные крепежные элементы')">Перфорированные крепежные элементы</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title" onclick="toggleSubcategories(this)">
+                        Стройматериалы
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory" onclick="filterProducts('Сухие смеси')">Сухие смеси</div>
+                        <div class="subcategory" onclick="filterProducts('Кирпичи')">Кирпичи</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title" onclick="toggleSubcategories(this)">
+                        Краски
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory" onclick="filterProducts('Эмали')">Эмали</div>
+                        <div class="subcategory" onclick="filterProducts('Пены и герметики')">Пены и герметики</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title" onclick="toggleSubcategories(this)">
+                        Электроговары
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory" onclick="filterProducts('Розетки и выключатели')">Розетки и выключатели</div>
+                        <div class="subcategory" onclick="filterProducts('Кабели и монтаж')">Кабели и монтаж</div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title" onclick="toggleSubcategories(this)">
+                        Окна
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory" onclick="filterProducts('Готовые окна')">Готовые окна</div>
+                        <div class="subcategory" onclick="filterProducts('Москитные сетки')">Москитные сетки</div>
+                    </div>
+                </div>
+            </aside>
             
-            <div class="all-categories" onclick="showAllProducts()">Все товары</div>
-            
-            <div class="category">
-                <div class="category-title" onclick="toggleSubcategories(this)">
-                    Скобяные изделия
-                    <span class="arrow">▼</span>
+            <main class="content">
+                <div id="products-grid" class="products-grid">
+                    <!-- Здесь будут появляться карточки товаров -->
                 </div>
-                <div class="subcategories">
-                    <div class="subcategory" onclick="filterProducts('Крепеж')">Крепеж</div>
-                    <div class="subcategory" onclick="filterProducts('Перфорированные крепежные элементы')">Перфорированные крепежные элементы</div>
-                </div>
-            </div>
-            
-            <div class="category">
-                <div class="category-title" onclick="toggleSubcategories(this)">
-                    Стройматериалы
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories">
-                    <div class="subcategory" onclick="filterProducts('Сухие смеси')">Сухие смеси</div>
-                    <div class="subcategory" onclick="filterProducts('Кирпичи')">Кирпичи</div>
-                </div>
-            </div>
-            
-            <div class="category">
-                <div class="category-title" onclick="toggleSubcategories(this)">
-                    Краски
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories">
-                    <div class="subcategory" onclick="filterProducts('Эмали')">Эмали</div>
-                    <div class="subcategory" onclick="filterProducts('Пены и герметики')">Пены и герметики</div>
-                </div>
-            </div>
-            
-            <div class="category">
-                <div class="category-title" onclick="toggleSubcategories(this)">
-                    Электроговары
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories">
-                    <div class="subcategory" onclick="filterProducts('Розетки и выключатели')">Розетки и выключатели</div>
-                    <div class="subcategory" onclick="filterProducts('Кабели и монтаж')">Кабели и монтаж</div>
-                </div>
-            </div>
-            
-            <div class="category">
-                <div class="category-title" onclick="toggleSubcategories(this)">
-                    Окна
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories">
-                    <div class="subcategory" onclick="filterProducts('Готовые окна')">Готовые окна</div>
-                    <div class="subcategory" onclick="filterProducts('Москитные сетки')">Москитные сетки</div>
-                </div>
-            </div>
-        </aside>
-        
-        <main class="content">
-            <div id="products-grid" class="products-grid">
-                <!-- Здесь будут появляться карточки товаров -->
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
     
     <footer>
@@ -467,7 +482,6 @@
         function showAllProducts() {
             currentCategory = null;
             renderProducts(allProducts);
-            // Убираем выделение со всех подкатегорий
             document.querySelectorAll('.subcategory').forEach(el => {
                 el.classList.remove('active');
             });
@@ -477,13 +491,11 @@
             currentCategory = category;
             const filteredProducts = allProducts.filter(product => product.category === category);
             renderProducts(filteredProducts);
-            
-            // Убираем выделение со всех подкатегорий
+
             document.querySelectorAll('.subcategory').forEach(el => {
                 el.classList.remove('active');
             });
-            
-            // Добавляем выделение выбранной подкатегории
+
             event.target.classList.add('active');
         }
 
