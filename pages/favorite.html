@@ -5,297 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Избранное</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        html, body {
-            height: 100%;
-        }
-        
-        body {
-            background-color: #FEFFEB;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Хедер */
-        header {
-            background-color: #7B5E4B;
-            padding: 15px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        
-        .logo img {
-            width: 50px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        .nav-links li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-        }
-        
-        .header-icons {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            padding-right: 5px;
-        }
-        
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 8px 15px;
-        }
-        
-        .search-bar input {
-            border: none;
-            background: transparent;
-            outline: none;
-            width: 900px;
-            padding: 5px;
-        }
-        
-        .search-bar i {
-            color: #666;
-        }
-        
-        .icon {
-            font-size: 20px;
-            color: #333;
-            cursor: pointer;
-        }
-        
-        .login-btn {
-            background-color: #aeaeae;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .burger-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        /* Основное содержимое */
-        .main-content {
-            flex: 1 0 auto;
-            width: 100%;
-        }
-        
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px;
-            margin-right: 20px;
-        }
-        
-        .sidebar h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #333;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .category {
-            margin-bottom: 10px;
-        }
-        
-        .category-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        
-        .category-title:hover {
-            color: #7B5E4B;
-        }
-        
-        .subcategories {
-            display: none;
-            padding-left: 15px;
-            margin-top: 5px;
-        }
-        
-        .subcategory {
-            padding: 5px 0;
-            cursor: pointer;
-            color: #666;
-        }
-        
-        .subcategory:hover, .subcategory.active {
-            color: #7B5E4B;
-            font-weight: bold;
-        }
-        
-        .content {
-            flex: 1;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 20px;
-            min-height: 500px;
-        }
-        
-        .contact-info {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .contact-info p {
-            margin-bottom: 10px;
-            color: #666;
-        }
-        
-        .phone {
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .email {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        
-        .email:hover {
-            text-decoration: underline;
-        }
-        
-        .footer-text {
-            font-style: italic;
-            color: #999;
-            margin-top: 15px;
-        }
-        
-        .all-categories {
-            font-weight: bold;
-            color: #7B5E4B;
-            cursor: pointer;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        
-        /* Футер */
-        footer {
-            background-color: #7B5E4B;
-            padding: 30px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #ffffff;
-            flex-shrink: 0;
-        }
-        
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        
-        .footer-social {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-icons i {
-            font-size: 20px;
-            color: #ffffff;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .burger-menu {
-                display: block;
-            }
-            
-            .search-bar input {
-                width: 150px;
-            }
-            
-            .container {
-                flex-direction: column;
-                padding: 10px;
-            }
-            
-            .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/css.css">
 </head>
 <body>
-    <header>
-        <div class="burger-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-        
+    <header>      
         <div class="logo">
             <a href="project.html"><img src="../img/icon.png"></a>
         </div>
         <div class="header-icons">
             <div class="search-bar">
-                <input type="text" placeholder="Поиск товаров">
+                <input type="text" id="search-input" placeholder="Поиск товаров">
                 <i class="fas fa-search"></i>
             </div>
             <a href="favorite.html"><i class="far fa-heart icon"></i></a>
             <a href="basket.html"><i class="fas fa-shopping-cart icon"></i></a>
-            <button class="login-btn">Войти</button>
+            <a href="account.html" class="login-btn" target="_blank">Войти</a>
         </div>
+
+        <button class="burger-menu" id="openMobileNav">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav__header">
+            <div class="logo">
+                <a href="project.html"><img src="../img/icon.png"></a>
+            </div>
+            <button class="mobile-nav__btn" id="closeMobileNav">
+                <img src="../img/nav-close.svg" alt="Close navigation">
+            </button>
+        </div>
+        <div class="mobile-nav__body">
+            <ul class="nav__list">
+                <li class="nav__list-item">
+                    <a href="project.html">Товары</a>
+                </li>
+                <li class="nav__list-item">
+                    <a href="favorite.html">Избранные товары</a>
+                </li>
+                <li class="nav__list-item">
+                    <a href="basket.html">Корзина</a>
+                </li>
+                <li class="nav__list-item">
+                    <a href="account.html" target="_blank">Войти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
     <main class="content">
-        <div id="products-grid" class="products-grid">
+        <h1 class="favourite-title">Избранные товары</h1>
+        <div class="favorite-container">
+            <div id="products-grid" class="favorite-grid"></div>
         </div>
     </main>
+
     <footer>
         <div class="footer-social">
             <p>Давайте дружить</p>
@@ -310,5 +76,9 @@
             <p>stroymat@mail.ru</p>
         </div>
     </footer>
+    <script src="../scripts/cart-favorites.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script src="../scripts/mobile-menu.js"></script>
 </body>
 </html>
