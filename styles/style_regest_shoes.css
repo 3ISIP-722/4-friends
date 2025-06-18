@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+.login-container {
+  background: #FEFFEB;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container__wrapp {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .login-container__wrapp {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+}
+
+/* Форма */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .login-form label {
+    font-size: 14px;
+  }
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .login-form input {
+    font-size: 12px;
+  }
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #7B5E4B;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .login-form button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+.login-form button:hover {
+  background: #533e31;
+}
+
+/* Ссылки */
+.form-links {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .form-links {
+    font-size: 12px;
+  }
+}
+
+.form-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form-links a:hover {
+  text-decoration: underline;
+}
